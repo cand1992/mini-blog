@@ -20,8 +20,8 @@
     <%= f.text_area :body %>
   </div>
   <div class="field">
-    <%= f.label :author_name %><br />
-    <%= f.text_field :author_name %>
+    <%= f.label :author_id %> <br />
+    <%= f.select :author_id, Author.all.collect {|p| [p.username, p.id]}, { :include_blank => true} %>
   </div>
   <div class="field">
     <%= f.label :published_at %><br />
