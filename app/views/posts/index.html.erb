@@ -5,7 +5,7 @@
 <% @posts.each do |post| %>
   <h2><%= post.title.titleize %></h2>
   <h4><%= post.author_name %> | <%= time_tag(post.published_at.to_date) %></h4>
-  <p><%= post.body.html_safe %></p>
+  <p><%= simple_format(post.body) %></p>
   
   <%= link_to 'Show', post %>
   <%= link_to 'Edit', edit_post_path(post) %>
