@@ -5,7 +5,7 @@
 <% @posts.each do |post| %>
   <h2><%= post.title.titleize %></h2>
   <h4><%= link_to(post.author.try(:username), author_path(post.author)) if post.author%> | <%= time_tag(post.published_at.to_date) %></h4>
-  <p><%= simple_format(post.body) %></p>
+  <p><%= simple_format(truncate(post.body, length: 140, separator: ' ')+ link_to("Continue Reading", post)) %></p>
   
   <%= link_to 'Show', post %>
   <%= link_to 'Edit', edit_post_path(post) %>
