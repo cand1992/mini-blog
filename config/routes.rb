@@ -1,8 +1,13 @@
 MiniBlog::Application.routes.draw do
+  #  resources :comments
+
+
   resources :authors
 
 
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
 
 
   root to: 'home#index'
