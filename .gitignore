@@ -14,7 +14,7 @@
 /log/*.log
 /tmp
 /public/assets
-
+.sass-cache
 .DS_store
 .ruby-gemset
 .ruby-version
