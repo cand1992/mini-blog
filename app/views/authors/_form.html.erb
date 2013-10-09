@@ -1,15 +1,5 @@
 <%= simple_form_for @author do |f| %>
-  <% if @author.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@author.errors.count, "error") %> prohibited this author from being saved:</h2>
-
-      <ul>
-      <% @author.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= f.error_notification %>
   <%= f.input :first_name, placeholder: "Enter your first name" %>
   <%= f.input :last_name %>
   <%= f.input :username %>
