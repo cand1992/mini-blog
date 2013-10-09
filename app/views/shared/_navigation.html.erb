@@ -13,10 +13,11 @@
       <%= link_to "All_Authors", authors_path %>
     </li>
     <li>
-      <%= link_to 'Sign Up', new_author_path %>
-    </li>
-    <li>
-    <%= Rails.env %>
+      <% if current_author %>
+        Logged in as <%= current_author.username %>
+      <% else %>
+        <%= link_to 'Sign Up', new_author_path %>
+      <% end %>
   </li>
   </ul>
 </nav>
