@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_filter :authorize, except: [:index, :show]
   # GET /posts
   # GET /posts.json
   def index
@@ -14,7 +15,7 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
-    # @comment = Comment.new
+    @comment = Comment.new
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,7 +26,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.json
   def new
-    @post = Post.new
+    @post = current_author.posts.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @post }
@@ -40,7 +41,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(params[:post])
+    @post = current_author.posts.new(params[:post])
 
     respond_to do |format|
       if @post.save
